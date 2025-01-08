@@ -1,0 +1,42 @@
+  
+<div class="button-group">
+    <button class="create-user-button" (click)="openModal()">Create User</button>
+  </div>
+
+  <div class="modal" [class.show]="isModalOpen" (click)="closeModal($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2>Create User</h2>
+      <form>
+        <label for="firstName">First Name:</label>
+        <input id="firstName" [(ngModel)]="user.FirstName" name="firstName" required />
+  
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" [(ngModel)]="user.LastName" name="lastName" required />
+  
+        <label for="userName">Username:</label>
+        <input id="userName" [(ngModel)]="user.UserName" name="userName" required />
+  
+        <label for="email">Email:</label>
+        <input id="email" [(ngModel)]="user.Email" name="email" type="email" />
+  
+        <label for="gender">Gender:</label>
+        <select id="gender" [(ngModel)]="user.Gender" name="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+  
+        <label for="userType">User Type:</label>
+        <select id="userType" [(ngModel)]="user.UserType" name="userType" required>
+          <option *ngFor="let type of userTypes" [value]="type.id">{{ type.name }}</option>
+        </select>
+  
+        <label for="password">Password:</label>
+        <input id="password" [(ngModel)]="user.Password" name="password" type="password" required />
+  
+        <button type="button" (click)="createUser()">Create</button>
+        <button type="button" (click)="closeModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,131 @@
+/* Outer container */
+.outer {
+    height: 100vh;
+    background: linear-gradient(to top, #c9c9ff 50%, #6e6ef6 90%) no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+}
+
+/* Panel for the form */
+.panel {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+/* Panel heading (Login title) */
+.panel-heading h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input fields */
+.input-field {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.input-field input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+.input-field .fa {
+    color: #6e6ef6;
+    margin-right: 10px;
+}
+
+/* Hover and focus effect for input fields */
+.input-field:hover, .input-field input:focus {
+    border-color: #6e6ef6;
+}
+
+/* Password visibility toggle */
+.input-field .fa-eye, .input-field .fa-eye-slash {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Error handling for invalid inputs */
+.input-field.error {
+    border-color: red;
+}
+
+.input-field.error input {
+    color: red;
+}
+
+/* Small text for validation errors */
+small {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Forgot password link */
+#forget {
+    text-decoration: none;
+    color: #6e6ef6;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Login button */
+.btn {
+    background-color: #6e6ef6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #5a5ae2;
+}
+
+/* Sign-up link */
+.text-center {
+    font-size: 14px;
+    color: #6e6ef6;
+    margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .panel {
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .panel-heading h3 {
+        font-size: 20px;
+    }
+}
