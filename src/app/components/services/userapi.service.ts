@@ -15,7 +15,21 @@ export class UserApiService {
   }
 
   createUser(user: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/user/createUser`, user);
+    return this.http.post<any>(`${this.baseUrl}/User/CreateUser`, user);
   }
-
+  getUser(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/User/GetUser`);
+  }
+  getRoles(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/User/GetAllRoles`);
+  }
+  addRoleToUser(userRole: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/User/AddUserRoleMapping`, userRole);
+  }
+  getPermissionOfRoles(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/User/GetAllPermissionsByRoleId`);
+  }
+  createEmployee(user: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/Employee/AddUpdateEmployee`, user);
+  }
 }

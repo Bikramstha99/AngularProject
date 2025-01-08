@@ -3,40 +3,127 @@
     <button class="create-user-button" (click)="openModal()">Create User</button>
   </div>
 
+  <div class="container mt-3">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>UserName</th>
+          <th>UserType</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userLists">
+          <td>{{ user.userName }}</td>
+          <td>{{ user.userType }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="openRoleModal(user)">Manage Roles</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+
+    <div class="button-group">
+      <button class="create-user-button" (click)="openEmployeeModal()">Create Employee</button>
+    </div>
+    <div class="container mt-6">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeeLists">
+            <td>{{ employee.userName }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="deleteemployee(employee)">Manage Roles</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
   <div class="modal" [class.show]="isModalOpen" (click)="closeModal($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
       <h2>Create User</h2>
       <form>
         <label for="firstName">First Name:</label>
-        <input id="firstName" [(ngModel)]="user.FirstName" name="firstName" required />
+        <input id="firstName" [(ngModel)]="user.firstName" name="firstName" required />
   
         <label for="lastName">Last Name:</label>
-        <input id="lastName" [(ngModel)]="user.LastName" name="lastName" required />
+        <input id="lastName" [(ngModel)]="user.lastName" name="lastName" required />
   
         <label for="userName">Username:</label>
-        <input id="userName" [(ngModel)]="user.UserName" name="userName" required />
+        <input id="userName" [(ngModel)]="user.userName" name="userName" required />
   
         <label for="email">Email:</label>
-        <input id="email" [(ngModel)]="user.Email" name="email" type="email" />
+        <input id="email" [(ngModel)]="user.email" name="email" type="email" />
   
         <label for="gender">Gender:</label>
-        <select id="gender" [(ngModel)]="user.Gender" name="gender">
+        <select id="gender" [(ngModel)]="user.gender" name="gender">
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
   
         <label for="userType">User Type:</label>
-        <select id="userType" [(ngModel)]="user.UserType" name="userType" required>
+        <select id="userType" [(ngModel)]="user.userType" name="userType" required>
           <option *ngFor="let type of userTypes" [value]="type.id">{{ type.name }}</option>
         </select>
   
         <label for="password">Password:</label>
-        <input id="password" [(ngModel)]="user.Password" name="password" type="password" required />
+        <input id="password" [(ngModel)]="user.password" name="password" type="password" required />
   
         <button type="button" (click)="createUser()">Create</button>
         <button type="button" (click)="closeModal()">Cancel</button>
       </form>
     </div>
   </div>
+
+  <!-- ROles modal-->
+  <div class="modal" [class.show]="showRoleModal">
+    <div class="modal-content">
+      <h2>Roles</h2>
+        <label for="firstName">Role Name:</label>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Role Name</th>
+              <th>Activate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let role of roleLists">
+              <td>{{ role.roleName }}</td>
+              <td>
+                <input type="checkbox" [(ngModel)]="role.isSelected" [value]="role.roleId">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="saveRole()"> Save </button>
+    </div>
+  </div>
+
+
   
+
+  <!---employee model-->
+  <div class="modal" [class.show]="isModalEMployeeOpen">
+    <div class="modal-content">
+      <h2>Create EMployee</h2>
+      <form>
+        <label for="firstName">Employee Name:</label>
+        <input id="firstName" [(ngModel)]="user.firstName" name="name" required />
+  
+  
+        <button type="button" (click)="createEmployee()">Create</button>
+        <button type="button" (click)="closeModal()">Cancel</button>
+      </form>
+    </div>
+  </div>

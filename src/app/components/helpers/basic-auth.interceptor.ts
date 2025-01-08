@@ -23,6 +23,8 @@ export class BasicAuthInterceptor implements HttpInterceptor {
                 }
             });
         }
+        console.log('Bearer Token:', sessData.authdata);  // Debugging the token
+
 
         return next.handle(request);
     }
